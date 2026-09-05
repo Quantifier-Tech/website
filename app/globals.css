@@ -119,6 +119,13 @@ a {
   letter-spacing: -0.02em;
 }
 
+.nav-brand-tagline {
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
 .nav-links {
   display: flex;
   align-items: center;

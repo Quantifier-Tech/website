@@ -8,10 +8,6 @@ export default function HomePage() {
       <Nav />
 
       <main>
-        <section className="hero" aria-labelledby="hero-title">
-          <p className="hero-lede">∀ problem ∃ solution</p>
-        </section>
-
         <Portfolio />
 
         <section
@@ -20,10 +16,10 @@ export default function HomePage() {
           aria-labelledby="contact-title"
         >
           <h2 id="contact-title" className="contact-heading">
-            Contact
+            Contact Quantifier
           </h2>
           <p className="contact-lede">
-            Send a note about a project, collaboration, or question.
+            Send a message about a project, collaboration, or question.
           </p>
           <ContactForm />
         </section>

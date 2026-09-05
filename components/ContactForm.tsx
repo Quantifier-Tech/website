@@ -1,6 +1,9 @@
 "use client";
 
+import { useForm } from "@formspree/react";
 import { useState, type SubmitEvent } from "react";
+
+const FORMSPREE_FORM_ID = "mwlknpwe";
 
 type FieldErrors = {
   name?: string;
@@ -17,7 +20,7 @@ export function ContactForm() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<FieldErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [state, formspreeSubmit] = useForm(FORMSPREE_FORM_ID);
 
   function validate(): FieldErrors {
     const next: FieldErrors = {};
@@ -49,18 +52,25 @@ export function ContactForm() {
       return;
     }
 
-    // TODO: wire delivery (Resend, Formspree, Server Action, etc.)
-    setSubmitted(true);
+    void formspreeSubmit(event);
   }
 
-  if (submitted) {
+  if (state.succeeded) {
     return (
       <div className="contact-success" role="status">
         <h3>Thanks for reaching out</h3>
-        <p>Your message is ready — delivery will be connected soon.</p>
+        <p>Your message has been sent. We will get back to you soon.</p>
       </div>
     );
   }
+
+  const formError =
+    state.errors
+      ?.getFormErrors()
+      .map((error) => error.message)
+      .filter(Boolean)
+      .join(" ") ||
+    (state.errors ? "Something went wrong. Please try again." : null);
 
   return (
     <form className="contact-form" onSubmit={handleSubmit} noValidate>
@@ -75,6 +85,7 @@ export function ContactForm() {
           onChange={(event) => setName(event.target.value)}
           aria-invalid={Boolean(errors.name)}
           aria-describedby={errors.name ? "contact-name-error" : undefined}
+          disabled={state.submitting}
         />
         {errors.name ? (
           <p id="contact-name-error" className="field-error">
@@ -94,6 +105,7 @@ export function ContactForm() {
           onChange={(event) => setEmail(event.target.value)}
           aria-invalid={Boolean(errors.email)}
           aria-describedby={errors.email ? "contact-email-error" : undefined}
+          disabled={state.submitting}
         />
         {errors.email ? (
           <p id="contact-email-error" className="field-error">
@@ -113,6 +125,7 @@ export function ContactForm() {
           aria-describedby={
             errors.message ? "contact-message-error" : undefined
           }
+          disabled={state.submitting}
         />
         {errors.message ? (
           <p id="contact-message-error" className="field-error">
@@ -122,10 +135,16 @@ export function ContactForm() {
       </div>
 
       <div className="form-actions">
-        <button className="button" type="submit">
-          Send message
+        <button className="button" type="submit" disabled={state.submitting}>
+          {state.submitting ? "Sending…" : "Send"}
         </button>
       </div>
+
+      {formError ? (
+        <p className="field-error" role="alert">
+          {formError}
+        </p>
+      ) : null}
     </form>
   );
 }

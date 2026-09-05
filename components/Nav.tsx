@@ -4,14 +4,11 @@ export function Nav() {
   return (
     <header className="nav">
       <a className="nav-brand" href="#top" aria-label="Quantifier home">
-        <Image
-          src="/quantifier.png"
-          alt=""
-          width={120}
-          height={120}
-          priority
-        />
-        <span className="nav-brand-name">Quantifier</span>
+        <Image src="/quantifier.png" alt="" width={120} height={120} priority />
+        <span className="nav-brand-name">
+          Quantifier{" | "}
+          <span className="nav-brand-tagline">∀ problem ∃ solution</span>
+        </span>
       </a>
       <nav aria-label="Primary">
         <ul className="nav-links">
