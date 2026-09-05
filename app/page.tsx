@@ -9,9 +9,7 @@ export default function HomePage() {
 
       <main>
         <section className="hero" aria-labelledby="hero-title">
-          <p className="hero-lede">
-            Building secure and reliable software since 2018.
-          </p>
+          <p className="hero-lede">∀ problem ∃ solution</p>
         </section>
 
         <Portfolio />

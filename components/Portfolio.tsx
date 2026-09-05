@@ -3,32 +3,32 @@ import Image from "next/image";
 const items = [
   {
     title: "Software Development",
-    src: "/images/portfolio/laptop.jpg",
+    src: "/images/portfolio/laptop.webp",
     alt: "Laptop on a desk",
   },
   {
     title: "Functional Programming",
-    src: "/images/portfolio/blue_purple_shell.jpg",
+    src: "/images/portfolio/blue_purple_shell.webp",
     alt: "Iridescent shell",
   },
   {
     title: "Blockchain",
-    src: "/images/portfolio/blocks.jpg",
+    src: "/images/portfolio/blocks.webp",
     alt: "Stacked blocks",
   },
   {
     title: "Mathematics",
-    src: "/images/portfolio/blue_purple_spiral.jpg",
+    src: "/images/portfolio/blue_purple_spiral.webp",
     alt: "Abstract spiral",
   },
   {
     title: "Formal Verification",
-    src: "/images/portfolio/purple_grid.jpg",
+    src: "/images/portfolio/purple_grid.webp",
     alt: "Geometric grid",
   },
   {
     title: "Distributed Systems",
-    src: "/images/portfolio/blue_purple_planet.jpg",
+    src: "/images/portfolio/blue_purple_planet.webp",
     alt: "Planet-like sphere",
   },
 ] as const;
@@ -45,7 +45,6 @@ export function Portfolio() {
               width={1200}
               height={900}
               sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
-              loading="eager"
             />
             <p className="portfolio-item-label">{item.title}</p>
           </article>
