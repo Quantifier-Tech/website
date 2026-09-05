@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Software development, functional programming, blockchain, mathematics, formal verification, and distributed systems.",
   icons: {
     icon: [
-      { url: "/images/favicon/favicon.ico" },
+      { url: "/favicon.ico" },
       {
         url: "/images/favicon/favicon-32x32.png",
         sizes: "32x32",

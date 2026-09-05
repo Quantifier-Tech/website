@@ -5,7 +5,7 @@ export function Nav() {
     <header className="nav">
       <a className="nav-brand" href="#top" aria-label="Quantifier home">
         <Image
-          src="/images/universal-quantifier-for-all.png"
+          src="/quantifier.png"
           alt=""
           width={120}
           height={120}
